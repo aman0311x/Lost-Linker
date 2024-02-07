@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "844153587045",
+    "project_id": "lostlinker-8b41e",
+    "storage_bucket": "lostlinker-8b41e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:844153587045:android:569916b750b077e1c54d8c",
+        "android_client_info": {
+          "package_name": "com.example.lostlinker"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB51VQNx_cbvT4-3HLzEyGwYF827kypGmI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
