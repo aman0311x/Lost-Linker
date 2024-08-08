@@ -14,8 +14,8 @@ class HomePage extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.notifications),
             onPressed: () {
-              // Handle notification action
-              // You can add your logic for handling notifications here
+             
+              
             },
           ),
         ],
@@ -84,7 +84,7 @@ class _AllPostsTabState extends State<AllPostsTab> {
             ),
           ),
           content: Column(
-            mainAxisSize: MainAxisSize.min, // Set the height to be shorter
+            mainAxisSize: MainAxisSize.min, 
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
