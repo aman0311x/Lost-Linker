@@ -31,13 +31,13 @@ class _SignUpPageState extends State<SignUpPage> {
 
       print('User registered: ${userCredential.user!.uid}');
 
-      // If you need to save additional user details to the database
+     
       Map<String, dynamic> user = {
         'Full Name': _fullNameController.text,
         'Contact Number': _contactNumberController.text,
         'Email': _emailController.text,
         'Password': _passwordController.text,
-        // Add other user details as needed
+       
       };
 
       dbRef.child(_emailController.text.replaceAll('.', '_')).set(user);
