@@ -23,7 +23,7 @@ class _ProfilePageState extends State<ProfilePage> {
           IconButton(
             icon: Icon(Icons.logout),
             onPressed: () {
-              // Handle logout logic
+             
               _logout();
             },
           ),
@@ -45,7 +45,7 @@ class _ProfilePageState extends State<ProfilePage> {
               dynamic data = snapshot.data!.snapshot.value!;
               print('User data from Firebase: $data');
 
-              // Additional null checks for specific fields
+             
               String contactNumber = data['Contact Number'] ?? 'No Contact Number';
               String fullName = data['Full Name'] ?? 'No Full Name';
               String email = data['Email'] ?? 'No Email';
@@ -55,7 +55,7 @@ class _ProfilePageState extends State<ProfilePage> {
                   const Gap(80),
                   CircleAvatar(
                     radius: 50,
-                    // Use data['AvatarUrl'] if available, otherwise provide a default image
+                  
                     backgroundImage: AssetImage('asset/person.png'),
                   ),
                   const Gap(20),
@@ -93,15 +93,15 @@ class _ProfilePageState extends State<ProfilePage> {
       child: ListTile(
         title: Text(title),
         subtitle: Text(subtitle),
-        leading: Icon(iconData, color: Colors.black), // Use Icons with a color
+        leading: Icon(iconData, color: Colors.black), 
         //trailing: Icon(Icons.arrow_forward, color: Colors.grey.shade400),
         tileColor: Colors.white,
       ),
     );
   }
   void _logout() {
-    // Perform logout actions, such as clearing session data, navigating to login page, etc.
-    SessionController().setUserId(''); // Clear the user ID
+   
+    SessionController().setUserId(''); 
     Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => LoginPage()));
   }
 }
