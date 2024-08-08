@@ -17,7 +17,7 @@ class _LoginPageState extends State<LoginPage> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  dynamic userId = ''; // User ID field
+  dynamic userId = ''; 
 
   Future<void> _login() async {
     try {
@@ -30,10 +30,10 @@ class _LoginPageState extends State<LoginPage> {
         password: _passwordController.text,
       );
 
-      // Successfully logged in
+     
       print('User logged in: ${userCredential.user!.uid}');
 
-      // Set the user ID directly in the widget
+      
       setState(() {
         userId = _emailController.text;
       });
@@ -41,7 +41,7 @@ class _LoginPageState extends State<LoginPage> {
 
       SessionController().setUserId(userId.replaceAll('.', '_'));
 
-      // Navigate to HomePage on successful login
+      
       Navigator.push(
         context,
         MaterialPageRoute(
@@ -53,9 +53,9 @@ class _LoginPageState extends State<LoginPage> {
         isLoading = false;
       });
     } catch (e) {
-      // Handle login errors
+     
       print('Error during login: $e');
-      // Show an error message to the user
+     
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text('Login failed. Please check your credentials.'),
@@ -90,7 +90,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 SizedBox(height: 10),
 
-                // Email TextField
+               
                 TextFormField(
                   controller: _emailController,
                   validator: (text) {
@@ -106,7 +106,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 SizedBox(height: 12),
 
-                // Password TextField
+               
                 TextField(
                   controller: _passwordController,
                   obscureText: true,
@@ -117,7 +117,7 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 SizedBox(height: 20),
 
-                // Login Button
+               
                 ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
@@ -136,13 +136,9 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 SizedBox(height: 20),
 
-                // Display User ID
-                // Text('User ID: $userId', style: TextStyle(fontSize: 18)),
+                
 
-                // Profile Button
-
-
-                // Signup Button
+            
                 ElevatedButton(
                   onPressed: () {
                     Navigator.push(
