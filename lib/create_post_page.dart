@@ -28,19 +28,19 @@ class _CreatePostPageState extends State<CreatePostPage> {
 
 
 
-  String _postType = 'Lost'; // Default post type
+  String _postType = 'Lost'; 
 
   @override
   void initState() {
     super.initState();
-    Firebase.initializeApp(); // Initialize Firebase
+    Firebase.initializeApp(); 
     dbRef = FirebaseDatabase.instance.reference().child('posts');
   }
   Future<void> _getImage() async {
     await Firebase.initializeApp();
     final pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery);
     /*if (_selectedImage == null) {
-      // Show an error message if no image is selected
+      
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text('Please select an image.'),
         duration: Duration(seconds: 2),
@@ -57,31 +57,31 @@ class _CreatePostPageState extends State<CreatePostPage> {
   Future<void> _post() async {
     try {
       if (_selectedImage == null) {
-        // Handle case when no image is selected
+       
         return;
       }
 
-      // Get the Firebase storage reference
+     
       final Reference storageReference = FirebaseStorage.instance
           .ref()
           .child('post_images/${DateTime.now().toIso8601String()}');
 
-      // Upload the image to Firebase Storage
+     
       final UploadTask uploadTask = storageReference.putFile(_selectedImage!);
       final TaskSnapshot taskSnapshot = await uploadTask;
 
-      // Get the URL of the uploaded image
+      
       final String imageUrl = await taskSnapshot.ref.getDownloadURL();
 
-      // Get the current user's email
+   
       final User? user = _auth.currentUser;
       if (user == null) {
-        // Handle the case when the user is not logged in
+
         return;
       }
       final String userEmail = SessionController().getUserId();
 
-      // Upload data to Firebase Realtime Database with the user's email
+      
       dbRef.child(userEmail).push().set({
         'description': _descriptionController.text,
         'question': _questionController.text,
@@ -90,22 +90,22 @@ class _CreatePostPageState extends State<CreatePostPage> {
         'timestamp': DateTime.now().toIso8601String(), // Convert DateTime to string
       });
 
-      // Display a success message
+     
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text('Post uploaded successfully!'),
         duration: Duration(seconds: 2),
       ));
 
-      // Clear the controllers and image after uploading
+      
       _descriptionController.clear();
       _questionController.clear();
       setState(() {
         _selectedImage = null;
       });
     } catch (error) {
-      // Handle errors
+      
       print('Error uploading post: $error');
-      // Display an error message
+     
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         content: Text('Error uploading post. Please try again.'),
         duration: Duration(seconds: 2),
@@ -178,7 +178,7 @@ class _CreatePostPageState extends State<CreatePostPage> {
                   hintText: '  Enter your question here...',
                   border: OutlineInputBorder(),
 
-                  contentPadding: EdgeInsets.symmetric(vertical: 8.0), // Adjust the vertical padding
+                  contentPadding: EdgeInsets.symmetric(vertical: 8.0), 
 
                 ),
               ),
@@ -190,8 +190,8 @@ class _CreatePostPageState extends State<CreatePostPage> {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   border: Border.all(
-                    color: Colors.black, // Set border color if needed
-                    width: 2.0, // Set border width if needed
+                    color: Colors.black, 
+                    width: 2.0, 
                   ),
                 ),
                 child: Image.file(
@@ -205,7 +205,7 @@ class _CreatePostPageState extends State<CreatePostPage> {
               ElevatedButton(
                 onPressed: _getImage,
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.black, // Set button color to white
+                  primary: Colors.black, 
                 ),
                 child: Text('Import Photo',style: TextStyle(color: Colors.white),),
               ),
