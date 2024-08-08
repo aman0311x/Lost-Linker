@@ -22,26 +22,26 @@ class _ArchivePageState extends State<ArchivePage> {
     super.initState();
     postRef = FirebaseDatabase.instance.reference().child('posts');
 
-    // Load user posts when the page is created
+    
     _fetchUserPosts();
   }
 
   Future<void> _fetchUserPosts() async {
     try {
-      // Get the current user's ID using SessionController
+      
       String userId = SessionController().getUserId();
 
-      // Fetch posts based on the user's ID
+      
       DatabaseEvent snapshot = await postRef.child(userId).once();
 
       Map<dynamic, dynamic>? postsData = snapshot.snapshot.value as Map<dynamic, dynamic>?;
 
-      // Check if postsData is not null before processing
+      
       if (postsData != null) {
         posts.clear();
 
         postsData.forEach((key, value) {
-          // Handle each post data
+          
           Post post = Post(
             postId: key,
             description: value['description'],
@@ -54,14 +54,14 @@ class _ArchivePageState extends State<ArchivePage> {
           posts.add(post);
         });
 
-        // Update the UI with the new posts
+        
         setState(() {});
       } else {
-        // Handle case when no posts are found
+        
         print('No posts found for user: $userId');
       }
     } catch (error) {
-      // Handle errors
+      
       print('Error fetching user posts: $error');
     }
   }
@@ -79,9 +79,9 @@ class _ArchivePageState extends State<ArchivePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            // Remove the 'See Your Posts' button
+            
             SizedBox(height: 20),
-            // Display posts using ListView.builder
+           
             Expanded(
               child: ListView.builder(
                 itemCount: posts.length,
@@ -170,7 +170,7 @@ class PostCard extends StatelessWidget {
                   ' ${post.postType}',
                   style: TextStyle(
                     color: Colors.black54,
-                    fontWeight: FontWeight.bold,// or any other color you prefer
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
                 SizedBox(height: 8),
@@ -200,7 +200,7 @@ class PostCard extends StatelessWidget {
                   children: [
                     ElevatedButton(
                       onPressed: () {
-                        // Handle "Yes" button press
+                        
                       },
                       style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.white,
@@ -212,7 +212,7 @@ class PostCard extends StatelessWidget {
                     ),
                     ElevatedButton(
                       onPressed: () {
-                        // Handle "No" button press
+                        
                       },
                       style: ElevatedButton.styleFrom(
                         foregroundColor: Colors.white,
